@@ -1,0 +1,264 @@
+/* ============================================
+   PHANTOM FINANCE - DASHBOARD
+   ============================================ */
+
+.dashboard-hero {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  animation: fadeUp 0.6s var(--ease-bounce) both;
+}
+.dashboard-greeting {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.dashboard-total {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  letter-spacing: 0.02em;
+}
+.dashboard-total .currency {
+  font-size: 0.6em;
+  color: var(--muted);
+  vertical-align: super;
+}
+.dashboard-total-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted2);
+  margin-top: 0.25rem;
+}
+
+/* Quick Stats */
+.quick-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+/* Spending Breakdown */
+.spending-breakdown {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.spending-chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+}
+.spending-legend {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+  animation: fadeUp 0.4s var(--ease-bounce) both;
+}
+.legend-item:hover {
+  background: var(--surface2);
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.legend-name {
+  flex: 1;
+  font-weight: 500;
+}
+.legend-value {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted2);
+}
+
+/* Recent Activity */
+.activity-list {
+  display: flex;
+  flex-direction: column;
+}
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp 0.4s var(--ease-bounce) both;
+}
+.activity-item:last-child {
+  border-bottom: none;
+}
+.activity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.activity-dot.income { background: var(--success); }
+.activity-dot.expense { background: var(--danger); }
+.activity-dot.debt { background: var(--accent3); }
+.activity-dot.saving { background: var(--accent4); }
+.activity-info {
+  flex: 1;
+  min-width: 0;
+}
+.activity-name {
+  font-weight: 500;
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.activity-date {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--muted);
+}
+.activity-amount {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+/* Dashboard Grid Layout */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.dashboard-grid .card {
+  animation: fadeUp 0.5s var(--ease-bounce) both;
+}
+
+/* Alerts Section */
+.alert-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  margin-bottom: 0.5rem;
+  animation: fadeUp 0.4s var(--ease-bounce) both;
+  border-left: 3px solid;
+}
+.alert-item.warning { border-color: var(--warning); }
+.alert-item.danger { border-color: var(--danger); }
+.alert-item.info { border-color: var(--accent4); }
+.alert-item.success { border-color: var(--success); }
+.alert-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.alert-content {
+  flex: 1;
+}
+.alert-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.15rem;
+}
+.alert-text {
+  font-size: 0.75rem;
+  color: var(--muted2);
+}
+
+/* Tips Section */
+.tips-carousel {
+  position: relative;
+  overflow: hidden;
+}
+.tip-card {
+  background: linear-gradient(135deg, rgba(200,255,0,0.03), rgba(0,212,255,0.03));
+  border: 1px dashed var(--border2);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  animation: fadeUp 0.5s var(--ease-bounce) both;
+}
+.tip-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.tip-text {
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* Resources Link Cards */
+.resource-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+.resource-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-bounce);
+  cursor: pointer;
+  animation: fadeUp 0.4s var(--ease-bounce) both;
+}
+.resource-link:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--glow-lime);
+}
+.resource-link .resource-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.resource-link .resource-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.resource-link .resource-desc {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .spending-breakdown {
+    flex-direction: column;
+    align-items: center;
+  }
+  .quick-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

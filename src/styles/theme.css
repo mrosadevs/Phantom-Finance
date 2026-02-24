@@ -1,0 +1,48 @@
+/* ============================================
+   PHANTOM FINANCE - LIGHT THEME
+   ============================================ */
+
+body.light {
+  --bg: #f5f5f8;
+  --surface: #ffffff;
+  --surface2: #f0f0f5;
+  --surface3: #e8e8ef;
+  --border: #d8d8e0;
+  --border2: #c5c5d0;
+  --accent: #6b9900;
+  --accent2: #6200ea;
+  --accent3: #e0225a;
+  --accent4: #0098cc;
+  --accent5: #e67600;
+  --text: #1a1a2e;
+  --text2: #333350;
+  --muted: #888899;
+  --muted2: #6666778;
+  --success: #00b859;
+  --warning: #e69500;
+  --danger: #d41440;
+
+  --glow-lime: 0 0 30px rgba(107, 153, 0, 0.15);
+  --glow-violet: 0 0 30px rgba(98, 0, 234, 0.15);
+  --glow-pink: 0 0 30px rgba(224, 34, 90, 0.15);
+  --glow-cyan: 0 0 30px rgba(0, 152, 204, 0.15);
+  --glow-orange: 0 0 30px rgba(230, 118, 0, 0.15);
+}
+
+body.light #particle-canvas {
+  opacity: 0.3;
+}
+
+body.light .cursor-dot,
+body.light .cursor-ring {
+  mix-blend-mode: multiply;
+}
+
+body.light ::-webkit-scrollbar-track {
+  background: var(--surface2);
+}
+
+body.light ::selection {
+  background: rgba(107, 153, 0, 0.2);
+  color: var(--accent);
+}

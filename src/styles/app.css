@@ -1,0 +1,452 @@
+/* ============================================
+   PHANTOM FINANCE - APP PAGES (Monthly, Debts, etc.)
+   ============================================ */
+
+/* ---- Page Top Bar ---- */
+.page-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ---- Summary Bar ---- */
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* ---- Data List ---- */
+.data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.data-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  transition: all var(--transition-fast);
+  animation: fadeUp 0.4s var(--ease-bounce) both;
+  cursor: default;
+  gap: 1rem;
+}
+.data-row:hover {
+  border-color: var(--border2);
+  background: var(--surface2);
+  transform: translateX(4px);
+}
+.data-row .row-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.data-row .row-amount {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+.data-row .row-meta {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.data-row .row-actions {
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+.data-row:hover .row-actions {
+  opacity: 1;
+}
+.row-action-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+}
+.row-action-btn:hover {
+  border-color: var(--border2);
+  background: var(--surface);
+}
+.row-action-btn.delete:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: rgba(255, 23, 68, 0.08);
+}
+
+/* ---- Debt Row (Extended) ---- */
+.debt-row {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: all var(--transition-bounce);
+  animation: fadeUp 0.5s var(--ease-bounce) both;
+}
+.debt-row:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+.debt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+.debt-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.debt-payment {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--accent3);
+}
+.debt-details {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+.debt-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.debt-detail-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+.debt-detail-value {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.debt-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.debt-progress-row .progress-bar {
+  flex: 1;
+}
+.debt-percent {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent);
+  min-width: 40px;
+  text-align: right;
+}
+.debt-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ---- Budget Comparison Bar ---- */
+.budget-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.budget-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.budget-bar-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.budget-bar-amounts {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted2);
+}
+.budget-bar-track {
+  height: 6px;
+  background: var(--bg);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.budget-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1.2s var(--ease-smooth);
+  transform-origin: left;
+  animation: barGrow 1s var(--ease-smooth) both;
+}
+.budget-bar-fill.under { background: linear-gradient(90deg, var(--success), #40ff90); }
+.budget-bar-fill.over { background: linear-gradient(90deg, var(--danger), #ff5070); }
+.budget-bar-fill.near { background: linear-gradient(90deg, var(--warning), #ffc040); }
+
+/* ---- Chart Container (simple bar chart via CSS) ---- */
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 120px;
+  padding: 0.5rem 0;
+}
+.chart-bar {
+  flex: 1;
+  min-width: 20px;
+  border-radius: 4px 4px 0 0;
+  transition: all var(--transition-bounce);
+  position: relative;
+  cursor: pointer;
+  animation: barGrow 0.8s var(--ease-bounce) both;
+  transform-origin: bottom;
+}
+.chart-bar:hover {
+  filter: brightness(1.2);
+}
+.chart-bar::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.chart-bar.lime { background: linear-gradient(to top, var(--accent), rgba(200,255,0,0.4)); }
+.chart-bar.violet { background: linear-gradient(to top, var(--accent2), rgba(112,0,255,0.4)); }
+.chart-bar.pink { background: linear-gradient(to top, var(--accent3), rgba(255,45,107,0.4)); }
+.chart-bar.cyan { background: linear-gradient(to top, var(--accent4), rgba(0,212,255,0.4)); }
+.chart-bar.orange { background: linear-gradient(to top, var(--accent5), rgba(255,136,0,0.4)); }
+
+.chart-labels {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 0.5rem;
+}
+
+/* ---- Donut Chart (CSS-only) ---- */
+.donut-chart {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.donut-center {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: var(--surface);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.donut-value {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+}
+.donut-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+}
+
+/* ---- Property Expense Item ---- */
+.property-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.25rem;
+  transition: all var(--transition-fast);
+  animation: fadeUp 0.4s var(--ease-bounce) both;
+}
+.property-item:hover {
+  border-color: var(--border2);
+  transform: translateX(4px);
+}
+.property-item .item-check {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--border2);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.property-item .item-check.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+}
+.property-item .item-check:hover {
+  border-color: var(--accent);
+}
+.property-item .item-info {
+  flex: 1;
+  min-width: 0;
+}
+.property-item .item-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.property-item .item-cost {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--accent4);
+  white-space: nowrap;
+}
+.property-item .item-actions {
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+.property-item:hover .item-actions {
+  opacity: 1;
+}
+
+/* ---- Annual Budget Bars ---- */
+.annual-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  animation: fadeUp 0.4s var(--ease-bounce) both;
+}
+.annual-item:last-child {
+  border-bottom: none;
+}
+.annual-name {
+  flex: 1;
+  min-width: 120px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.annual-bar {
+  flex: 2;
+  height: 8px;
+  background: var(--bg);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.annual-fill {
+  height: 100%;
+  border-radius: 4px;
+  animation: barGrow 1s var(--ease-smooth) both;
+  transform-origin: left;
+}
+.annual-amount {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 100px;
+  text-align: right;
+}
+
+/* ---- Quick Add Floating Button ---- */
+.fab {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #000;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--glow-lime);
+  z-index: 50;
+  transition: all var(--transition-bounce);
+  animation: bounceIn 0.6s var(--ease-bounce) both;
+}
+.fab:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 0 60px rgba(200, 255, 0, 0.4);
+}
+.fab:active {
+  transform: scale(0.95);
+}
+
+/* ---- Inline Edit ---- */
+.inline-edit {
+  background: transparent;
+  border: none;
+  border-bottom: 1px dashed var(--border2);
+  color: var(--text);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.1rem 0.25rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+.inline-edit:focus {
+  border-color: var(--accent);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .summary-bar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .debt-details {
+    gap: 0.75rem;
+  }
+  .data-row {
+    flex-wrap: wrap;
+  }
+  .fab {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.3rem;
+  }
+}
