@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window._phantomRefreshPage = (page) => refreshPage(page);
   window._phantomRefreshAll = () => refreshAllPages();
+  window._phantomShowImportModal = () => showImportModal();
 
   window._phantomLoadDemo = () => {
     // Enter demo mode — data stays in memory only, not saved to localStorage

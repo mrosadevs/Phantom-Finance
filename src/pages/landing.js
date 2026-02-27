@@ -108,7 +108,7 @@ export function initLanding() {
 
   // Event listeners
   page.querySelector('#hero-start').addEventListener('click', () => showPage('dashboard'));
-  page.querySelector('#hero-import').addEventListener('click', () => document.getElementById('file-import')?.click());
+  page.querySelector('#hero-import').addEventListener('click', () => window._phantomShowImportModal?.());
   page.querySelector('#cta-start').addEventListener('click', () => showPage('dashboard'));
   page.querySelector('#cta-demo').addEventListener('click', () => {
     window._phantomLoadDemo?.();

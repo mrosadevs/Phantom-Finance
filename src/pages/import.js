@@ -256,8 +256,9 @@ function renderReview(page) {
   let totalIncome = 0, totalExpenses = 0, needsReview = 0, skipCount = 0;
   let incomeCount = 0, expenseCount = 0;
 
+  const defaultCat = { targetSection: 'monthlyExpenses', category: 'General', confidence: 'low', suggestedName: '', reasoning: '' };
   transactions.forEach((t, i) => {
-    const cat = categorizations[i];
+    const cat = categorizations[i] || defaultCat;
     if (cat.confidence === 'low') needsReview++;
     if (cat.targetSection === 'skip') { skipCount++; return; }
     if (cat.targetSection === 'income') { totalIncome += t.amount; incomeCount++; }
@@ -268,7 +269,7 @@ function renderReview(page) {
 
   // Filter transactions
   const filtered = transactions.map((t, i) => ({ ...t, _idx: i })).filter((t) => {
-    const cat = categorizations[t._idx];
+    const cat = categorizations[t._idx] || defaultCat;
     if (filter === 'all') return true;
     if (filter === 'needs-review') return cat.confidence === 'low';
     if (filter === 'income') return cat.targetSection === 'income';
@@ -351,7 +352,7 @@ function renderReview(page) {
             <tbody>
               ${filtered.map(t => {
                 const i = t._idx;
-                const cat = categorizations[i];
+                const cat = categorizations[i] || defaultCat;
                 const isLow = cat.confidence === 'low';
                 const isMed = cat.confidence === 'medium';
                 return `
@@ -497,6 +498,12 @@ async function startProcessing(file) {
         if (textEl) textEl.textContent = `${done} / ${total} transactions`;
       }
     );
+
+    // Ensure every transaction has a categorization (pad if AI returned fewer)
+    const fallback = { targetSection: 'monthlyExpenses', category: 'General', confidence: 'low', suggestedName: '', reasoning: '' };
+    while (importState.categorizations.length < importState.transactions.length) {
+      importState.categorizations.push({ ...fallback });
+    }
 
     importState.step = 'review';
     renderImport();
