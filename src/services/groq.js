@@ -5,12 +5,11 @@
 import { getState } from './store.js';
 
 const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const _k = [103,115,107,95,56,121,50,73,56,110,116,73,113,121,87,85,121,66,108,81,106,51,71,89,87,71,100,121,98,51,70,89,70,110,121,78,68,81,51,78,114,69,122,121,50,97,73,118,120,56,90,51,105,106,81,108];
 const BATCH_SIZE = 25;
 const BATCH_DELAY = 250;
 
 export function getApiKey() {
-  return localStorage.getItem('phantom-finance-groq-key') || _k.map(c => String.fromCharCode(c)).join('');
+  return localStorage.getItem('phantom-finance-groq-key') || import.meta.env.VITE_GROQ_API_KEY || '';
 }
 
 const SYSTEM_PROMPT = `You are a financial transaction categorizer for a personal budget app. You will receive a JSON array of bank transactions. For each transaction, determine:
