@@ -33,6 +33,7 @@ const defaultState = {
     language: 'en',
     notificationsEnabled: false,
     reminderDaysBefore: 3,
+    groqModel: 'llama-3.3-70b-versatile',
   },
 };
 

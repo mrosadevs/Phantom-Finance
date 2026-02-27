@@ -108,6 +108,40 @@ export function renderSettings() {
         `}
       </div>
 
+      <!-- AI Categorization -->
+      <div class="card card-cyan" data-animate style="animation-delay:0.12s;margin-bottom:1.5rem;">
+        <div class="card-header">
+          <div class="card-title">&#129302; AI Categorization</div>
+          <span class="tag ${localStorage.getItem('phantom-finance-groq-key') ? 'success' : 'pink'}">${localStorage.getItem('phantom-finance-groq-key') ? 'Connected' : 'Not Set'}</span>
+        </div>
+        <p class="settings-desc">
+          Connect to Groq AI to automatically categorize bank transactions when importing statements. Your API key is stored locally — never sent anywhere except Groq.
+        </p>
+        <div class="settings-row" style="margin-top:0.75rem;">
+          <div class="settings-row-info">
+            <div class="settings-row-label">Groq API Key</div>
+            <div class="settings-row-desc">Get a free key at console.groq.com</div>
+          </div>
+          <div style="display:flex;gap:0.5rem;align-items:center;">
+            <input class="form-input" id="groq-api-key" type="password"
+                   value="${localStorage.getItem('phantom-finance-groq-key') ? '••••••••••••••••' : ''}"
+                   placeholder="gsk_..." style="width:220px;font-size:0.8rem;" />
+            <button class="btn-ghost btn-sm" id="save-groq-key">Save</button>
+            ${localStorage.getItem('phantom-finance-groq-key') ? '<button class="btn-ghost btn-sm" id="clear-groq-key" style="color:var(--danger);">Clear</button>' : ''}
+          </div>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-info">
+            <div class="settings-row-label">AI Model</div>
+            <div class="settings-row-desc">Model used for transaction categorization</div>
+          </div>
+          <select class="form-input" id="groq-model" style="width:auto;min-width:200px;">
+            <option value="llama-3.3-70b-versatile" ${state.settings.groqModel === 'llama-3.3-70b-versatile' ? 'selected' : ''}>Llama 3.3 70B (Best)</option>
+            <option value="llama-3.1-8b-instant" ${state.settings.groqModel === 'llama-3.1-8b-instant' ? 'selected' : ''}>Llama 3.1 8B (Faster)</option>
+          </select>
+        </div>
+      </div>
+
       <!-- Appearance -->
       <div class="card card-violet" data-animate style="animation-delay:0.15s;margin-bottom:1.5rem;">
         <div class="card-header">
@@ -221,6 +255,32 @@ export function renderSettings() {
     exitDemoMode(false); // false = clear data
     renderSettings();
     toast('Demo data cleared', 'info');
+  });
+
+  // Groq API key
+  page.querySelector('#save-groq-key')?.addEventListener('click', () => {
+    const input = page.querySelector('#groq-api-key');
+    const val = input?.value?.trim();
+    if (!val || val === '••••••••••••••••') {
+      toast('Enter a valid API key', 'warning');
+      return;
+    }
+    if (!val.startsWith('gsk_')) {
+      toast('Groq API keys start with "gsk_"', 'error');
+      return;
+    }
+    localStorage.setItem('phantom-finance-groq-key', val);
+    toast('Groq API key saved!', 'success');
+    renderSettings();
+  });
+  page.querySelector('#clear-groq-key')?.addEventListener('click', () => {
+    localStorage.removeItem('phantom-finance-groq-key');
+    toast('API key removed', 'info');
+    renderSettings();
+  });
+  page.querySelector('#groq-model')?.addEventListener('change', (e) => {
+    setState(s => { s.settings.groqModel = e.target.value; });
+    toast('AI model updated', 'success');
   });
 
   // Notifications toggle

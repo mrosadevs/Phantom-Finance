@@ -20,6 +20,7 @@ import { initProperty, renderProperty } from './pages/property.js';
 import { initAnnual, renderAnnual } from './pages/annual.js';
 import { initBusiness, renderBusiness } from './pages/business.js';
 import { initSettings, renderSettings } from './pages/settings.js';
+import { initImport, renderImport } from './pages/import.js';
 
 // ---- Initialize App ----
 document.addEventListener('DOMContentLoaded', () => {
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnnual();
   initBusiness();
   initSettings();
+  initImport();
 
   // Init notifications
   initNotifications();
@@ -130,6 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
     refreshPage(page);
   };
 
+  window._phantomRefreshPage = (page) => refreshPage(page);
+  window._phantomRefreshAll = () => refreshAllPages();
+
   window._phantomLoadDemo = () => {
     // Enter demo mode — data stays in memory only, not saved to localStorage
     enterDemoMode();
@@ -186,6 +191,7 @@ function refreshPage(page) {
     case 'annual': renderAnnual(); break;
     case 'business': renderBusiness(); break;
     case 'settings': renderSettings(); break;
+    case 'import': renderImport(); break;
   }
 }
 
@@ -197,6 +203,7 @@ function refreshAllPages() {
   renderAnnual();
   renderBusiness();
   renderSettings();
+  renderImport();
 }
 
 // ---- Import Modal ----
@@ -208,6 +215,13 @@ function showImportModal() {
       Import your budget data from a JSON template or an Excel spreadsheet. This will replace your current data.
     </p>
     <div class="export-options">
+      <div class="export-option" id="import-bank-opt">
+        <div class="export-icon" style="background:rgba(0,212,255,0.1);color:var(--accent4);">&#129302;</div>
+        <div>
+          <div class="export-label">Import Bank Statement (AI)</div>
+          <div class="export-desc">Upload Excel/CSV from your bank — AI auto-categorizes everything</div>
+        </div>
+      </div>
       <div class="export-option" id="import-json-opt">
         <div class="export-icon" style="background:rgba(200,255,0,0.1);color:var(--accent);">{ }</div>
         <div>
@@ -232,6 +246,11 @@ function showImportModal() {
     </div>
   `, {
     onOpen: (modal) => {
+      modal.querySelector('#import-bank-opt').addEventListener('click', () => {
+        closeModal();
+        showPage('import');
+        renderImport();
+      });
       modal.querySelector('#import-json-opt').addEventListener('click', () => {
         closeModal();
         const input = document.getElementById('file-import');

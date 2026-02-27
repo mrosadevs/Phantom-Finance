@@ -431,6 +431,258 @@
   border-color: var(--accent);
 }
 
+/* ---- Bank Import ---- */
+.import-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  border: 2px dashed var(--border2);
+  border-radius: var(--radius-lg);
+  background: var(--bg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-align: center;
+}
+.import-dropzone:hover,
+.import-dropzone.drag-over {
+  border-color: var(--accent4);
+  background: rgba(0, 212, 255, 0.03);
+}
+.import-dropzone-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+.import-dropzone-text {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+.import-dropzone-sub {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted);
+}
+.import-dropzone-formats {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--muted);
+  margin-top: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Import status alerts */
+.import-status {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+.import-status.success {
+  background: rgba(0, 184, 89, 0.06);
+  border-color: rgba(0, 184, 89, 0.2);
+}
+.import-status.warning {
+  background: rgba(255, 136, 0, 0.06);
+  border-color: rgba(255, 136, 0, 0.2);
+}
+.import-status-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+.import-status-title { font-weight: 600; font-size: 0.85rem; margin-bottom: 0.15rem; }
+.import-status-text { font-size: 0.75rem; color: var(--muted2); line-height: 1.4; }
+
+/* How it works steps */
+.import-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+.import-step {
+  text-align: center;
+  padding: 1rem;
+}
+.import-step-num {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 0.75rem;
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--accent4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.import-step-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+.import-step-desc {
+  font-size: 0.7rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* Import progress / spinner */
+.import-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem;
+  text-align: center;
+}
+.import-spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent4);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 1.25rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.import-progress-text {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted2);
+  letter-spacing: 0.03em;
+}
+
+/* Import filter tabs */
+.import-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+.import-tab {
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--muted2);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.import-tab:hover {
+  border-color: var(--border2);
+  color: var(--text);
+}
+.import-tab.active {
+  background: var(--accent4);
+  color: #000;
+  border-color: var(--accent4);
+  font-weight: 600;
+}
+
+/* Import review table */
+.import-table-wrap {
+  overflow-x: auto;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+.import-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+.import-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.import-table th {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  background: var(--surface);
+  padding: 0.65rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.import-table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.import-table tbody tr {
+  transition: background var(--transition-fast);
+}
+.import-table tbody tr:hover {
+  background: var(--surface2);
+}
+
+/* Review row highlight */
+.import-row-review {
+  background: rgba(255, 136, 0, 0.04);
+  border-left: 3px solid var(--accent5);
+}
+.import-row-review:hover {
+  background: rgba(255, 136, 0, 0.07) !important;
+}
+
+/* Table cells */
+.import-cell-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--muted2);
+  white-space: nowrap;
+}
+.import-cell-name {
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+.import-cell-raw {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--muted);
+  margin-top: 0.15rem;
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.import-cell-amount {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.import-cell-amount.positive { color: var(--success); }
+.import-cell-amount.negative { color: var(--accent3); }
+
+/* Compact selects for import table */
+.import-select {
+  font-size: 0.72rem !important;
+  padding: 0.3rem 1.6rem 0.3rem 0.5rem !important;
+  min-width: 110px;
+  border-radius: var(--radius-sm) !important;
+}
+
+/* Import table checkboxes */
+.import-table input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent4);
+  cursor: pointer;
+}
+
 /* ---- Responsive ---- */
 @media (max-width: 768px) {
   .summary-bar {
@@ -448,5 +700,15 @@
     width: 48px;
     height: 48px;
     font-size: 1.3rem;
+  }
+  .import-steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .import-tabs {
+    gap: 0.15rem;
+  }
+  .import-tab {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.6rem;
   }
 }
