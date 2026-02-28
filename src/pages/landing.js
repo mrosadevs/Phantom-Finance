@@ -94,6 +94,81 @@ export function initLanding() {
       </div>
     </section>
 
+    <section class="landing-changelog">
+      <div class="changelog-container">
+        <div class="section-header" style="text-align:center;justify-content:center;flex-direction:column;margin-bottom:2rem;">
+          <h2 class="section-title">WHAT'S NEW</h2>
+          <p class="section-subtitle">Recent updates &amp; improvements</p>
+        </div>
+        <div class="changelog-entries">
+
+          <div class="changelog-entry theodore-entry" data-animate style="animation-delay:0.05s">
+            <div class="changelog-dot ghost"></div>
+            <div class="changelog-body">
+              <div class="changelog-meta">
+                <span class="changelog-tag ai">&#129302; AI Visit</span>
+                <span class="changelog-date">Feb 28, 2026</span>
+              </div>
+              <div class="changelog-title">Theodore was here.</div>
+              <div class="changelog-desc">
+                Offline's AI dropped by at 2AM, poked around the codebase, decided everything looked good enough not to rewrite,
+                and left this note so you'd know. No bugs introduced. Probably. — <em>Theodore</em>
+              </div>
+            </div>
+          </div>
+
+          <div class="changelog-entry" data-animate style="animation-delay:0.1s">
+            <div class="changelog-dot lime"></div>
+            <div class="changelog-body">
+              <div class="changelog-meta">
+                <span class="changelog-tag feature">&#10024; Feature</span>
+                <span class="changelog-date">Feb 2026</span>
+              </div>
+              <div class="changelog-title">245+ Smart Financial Tips</div>
+              <div class="changelog-desc">Contextual tips that adapt to your actual financial situation — not just generic advice. Daily rotating tip included.</div>
+            </div>
+          </div>
+
+          <div class="changelog-entry" data-animate style="animation-delay:0.15s">
+            <div class="changelog-dot violet"></div>
+            <div class="changelog-body">
+              <div class="changelog-meta">
+                <span class="changelog-tag feature">&#10024; Feature</span>
+                <span class="changelog-date">Feb 2026</span>
+              </div>
+              <div class="changelog-title">Business Expense Tracker</div>
+              <div class="changelog-desc">Separate your freelance &amp; business costs from personal finances. Monthly + annual views, all in one place.</div>
+            </div>
+          </div>
+
+          <div class="changelog-entry" data-animate style="animation-delay:0.2s">
+            <div class="changelog-dot cyan"></div>
+            <div class="changelog-body">
+              <div class="changelog-meta">
+                <span class="changelog-tag improvement">&#128736; Improved</span>
+                <span class="changelog-date">Jan 2026</span>
+              </div>
+              <div class="changelog-title">Excel Import &amp; Export</div>
+              <div class="changelog-desc">Full multi-sheet workbook export and .xlsx import with automatic column mapping. Your data, your format.</div>
+            </div>
+          </div>
+
+          <div class="changelog-entry" data-animate style="animation-delay:0.25s">
+            <div class="changelog-dot pink"></div>
+            <div class="changelog-body">
+              <div class="changelog-meta">
+                <span class="changelog-tag improvement">&#128736; Improved</span>
+                <span class="changelog-date">Jan 2026</span>
+              </div>
+              <div class="changelog-title">Responsive from Mobile to 8K</div>
+              <div class="changelog-desc">Layout scales cleanly across every viewport. Tested from 375px phones to 7680px ultrawide displays.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <section class="landing-cta">
       <div class="cta-card" data-animate>
         <h2 class="cta-title">Ready to Take Control?</h2>
